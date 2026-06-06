@@ -63,6 +63,24 @@ def create_mixture(profile1, profile2):
 
     return dict(mixture)
 
+def apply_dropout(profile, probability=0.2):
+
+    dropped = {}
+
+    for marker, alleles in profile.items():
+
+        remaining = []
+
+        for allele in alleles:
+            if random.random() > probability:
+                remaining.append(allele)
+
+        if len(remaining) == 0:
+            remaining.append(random.choice(alleles))
+
+        dropped[marker] = sorted(remaining)
+
+    return dropped
 
 if __name__ == "__main__":
     frequencies = load_allele_frequencies()
@@ -71,6 +89,8 @@ if __name__ == "__main__":
     person2 = generate_profile(frequencies)
 
     mixture = create_mixture(person1, person2)
+
+    mixture_dropout = apply_dropout(mixture, probability=0.2)
 
     print("\nPERSON 1")
     print(person1)
@@ -81,7 +101,10 @@ if __name__ == "__main__":
     print("\nDNA MIXTURE")
     print(mixture)
 
-    excluded = can_be_excluded(person1, mixture)
+    print("\nDNA MIXTURE WITH DROPOUT")
+    print(mixture_dropout)
+
+    excluded = can_be_excluded(person1, mixture_dropout)
 
     print("\nEXCLUSION TEST")
 
