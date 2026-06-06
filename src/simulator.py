@@ -8,6 +8,12 @@ STR_MARKERS = {
 }
 
 
+
+import random
+from collections import defaultdict
+from likelihood import can_be_excluded
+
+
 def generate_profile():
     profile = {}
 
@@ -49,3 +55,12 @@ if __name__ == "__main__":
 
     print("\nDNA MIXTURE")
     print(mixture)
+
+excluded = can_be_excluded(person1, mixture)
+
+print("\nEXCLUSION TEST")
+
+if excluded:
+    print("Suspect excluded")
+else:
+    print("Suspect cannot be excluded")
