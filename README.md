@@ -29,6 +29,16 @@ False exclusion rate increases with dropout probability.
 | 0.20 | 0.773 |
 | 0.30 | 0.910 |
 
+## Results
+
+### Dropout experiment
+
+(figure)
+
+### Marker experiment
+
+Unexpectedly, false exclusion increased with the number of markers under a strict exclusion model. This occurs because each additional marker creates another opportunity for allele dropout to trigger exclusion.
+
 ## Figure
 ![Dropout experiment](reports/dropout_experiment.png)
 
