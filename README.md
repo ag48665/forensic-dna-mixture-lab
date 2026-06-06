@@ -54,6 +54,14 @@ Unexpectedly, false exclusion increased with the number of markers under a stric
 ## Figure
 ![Dropout experiment](reports/dropout_experiment.png)
 
+## Likelihood Ratio
+
+The project includes a simple educational likelihood ratio model.
+
+This simplified LR compares the number of STR markers consistent with the suspect profile against markers inconsistent with the suspect profile.
+
+It is intended only as a teaching example and is not suitable for forensic casework.
+
 
 ## Scientific question
 
