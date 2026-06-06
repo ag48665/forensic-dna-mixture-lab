@@ -2,6 +2,12 @@
 
 Simulation framework for studying the impact of allele dropout on forensic DNA mixture interpretation.
 
+## Research questions
+
+1. How does allele dropout affect false exclusion rates?
+2. How does the number of STR markers influence robustness?
+3. How many markers are needed to reduce false exclusions?
+   
 ## Features
 
 - STR profile simulation
