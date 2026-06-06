@@ -1,4 +1,5 @@
 import random
+from collections import defaultdict
 
 STR_MARKERS = {
     "D3S1358": [14, 15, 16, 17],
@@ -11,17 +12,40 @@ def generate_profile():
     profile = {}
 
     for marker, alleles in STR_MARKERS.items():
-        a1 = random.choice(alleles)
-        a2 = random.choice(alleles)
-
-        profile[marker] = sorted([a1, a2])
+        profile[marker] = sorted([
+            random.choice(alleles),
+            random.choice(alleles)
+        ])
 
     return profile
 
 
-if __name__ == "__main__":
-    profile = generate_profile()
+def create_mixture(profile1, profile2):
 
-    print("Generated STR profile:")
-    for marker, alleles in profile.items():
-        print(f"{marker}: {alleles}")
+    mixture = defaultdict(list)
+
+    for marker in STR_MARKERS:
+
+        mixture[marker].extend(profile1[marker])
+        mixture[marker].extend(profile2[marker])
+
+        mixture[marker] = sorted(set(mixture[marker]))
+
+    return dict(mixture)
+
+
+if __name__ == "__main__":
+
+    person1 = generate_profile()
+    person2 = generate_profile()
+
+    mixture = create_mixture(person1, person2)
+
+    print("\nPERSON 1")
+    print(person1)
+
+    print("\nPERSON 2")
+    print(person2)
+
+    print("\nDNA MIXTURE")
+    print(mixture)
