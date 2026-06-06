@@ -24,5 +24,13 @@ False exclusion rate increases with dropout probability.
 | 0.30 | 0.910 |
 
 ## Figure
+![Dropout experiment](reports/dropout_experiment.png)
 
-(dropout_experiment.png)
+## Scientific question
+
+How does allele dropout affect false exclusion rates in simulated forensic DNA mixtures?
+
+## Disclaimer
+
+This project is for educational and research training purposes only.
+It is not validated for forensic casework and must not be used in real investigations.
