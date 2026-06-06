@@ -1,3 +1,5 @@
+import pandas as pd
+
 from simulator import (
     generate_profile,
     create_mixture,
@@ -6,12 +8,13 @@ from simulator import (
 )
 from likelihood import can_be_excluded
 
+
 frequencies = load_allele_frequencies()
+results = []
 
 for markers_to_use in [1, 2, 3, 4]:
 
     false_exclusions = 0
-
     selected_markers = list(frequencies.keys())[:markers_to_use]
 
     reduced_freqs = {
@@ -20,22 +23,23 @@ for markers_to_use in [1, 2, 3, 4]:
     }
 
     for _ in range(1000):
-
         person1 = generate_profile(reduced_freqs)
         person2 = generate_profile(reduced_freqs)
 
         mixture = create_mixture(person1, person2)
-
-        mixture_dropout = apply_dropout(
-            mixture,
-            probability=0.10
-        )
+        mixture_dropout = apply_dropout(mixture, probability=0.10)
 
         if can_be_excluded(person1, mixture_dropout):
             false_exclusions += 1
 
     rate = false_exclusions / 1000
 
-    print(
-        f"Markers={markers_to_use}  False exclusion={rate:.3f}"
-    )
+    results.append({
+        "number_of_markers": markers_to_use,
+        "false_exclusion_rate": rate
+    })
+
+    print(f"Markers={markers_to_use}  False exclusion={rate:.3f}")
+
+df = pd.DataFrame(results)
+df.to_csv("reports/marker_results.csv", index=False)
