@@ -33,6 +33,23 @@ False exclusion rate increases with dropout probability.
 
 ### Dropout experiment
 
+![Dropout](reports/dropout_experiment.png)
+
+### Marker experiment
+
+![Markers](reports/marker_experiment.png)
+
+Observed false exclusion rates:
+
+| Markers | False exclusion rate |
+|----------|----------|
+| 1 | 0.168 |
+| 2 | 0.328 |
+| 3 | 0.432 |
+| 4 | 0.523 |
+
+### Dropout experiment
+
 (figure)
 
 ### Marker experiment
