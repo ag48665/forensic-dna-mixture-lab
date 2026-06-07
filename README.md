@@ -86,7 +86,7 @@ Under a strict exclusion model, increasing the number of markers can increase fa
 
 Evaluates how allele dropout affects the evidential strength of DNA profiles.
 
-![LR](reports/lr_experiment.png)
+![LR](src/lr_experiment.png)
 
 Example results:
 
