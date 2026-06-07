@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("reports/lr_results.csv")
 
-plt.figure(figsize=(8,5))
+plt.figure(figsize=(8, 5))
 
 plt.plot(
     df["dropout_probability"],
@@ -13,9 +13,8 @@ plt.plot(
 
 plt.xlabel("Dropout probability")
 plt.ylabel("Average log10(LR)")
-plt.title("Effect of dropout on DNA evidence strength")
-
+plt.title("Effect of allele dropout on likelihood ratio")
 plt.grid(True)
 
-plt.savefig("reports/lr_experiment.png")
-plt.show()
+plt.tight_layout()
+plt.savefig("reports/lr_experiment.png", dpi=300)
