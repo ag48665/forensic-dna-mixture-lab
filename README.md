@@ -71,3 +71,49 @@ How does allele dropout affect false exclusion rates in simulated forensic DNA m
 
 This project is for educational and research training purposes only.
 It is not validated for forensic casework and must not be used in real investigations.
+
+## Frequency-based Likelihood Ratio
+
+The project now includes a simplified frequency-based likelihood ratio.
+
+For each STR marker, the model estimates genotype probability using allele frequencies:
+
+- homozygous genotype: p²
+- heterozygous genotype: 2pq
+
+The combined LR is calculated across markers consistent with the observed mixture.
+
+This is a simplified educational model and is not validated for forensic casework.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
