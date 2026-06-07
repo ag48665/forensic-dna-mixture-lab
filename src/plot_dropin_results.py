@@ -16,12 +16,8 @@ plt.ylabel("Average log10(LR)")
 plt.title("Effect of allele drop-in on DNA evidence strength")
 
 plt.grid(True)
-
 plt.tight_layout()
 
-plt.savefig(
-    "reports/dropin_experiment.png",
-    dpi=300
-)
+plt.savefig("reports/dropin_experiment.png", dpi=300)
 
 print("Plot saved.")
