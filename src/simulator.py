@@ -3,7 +3,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-from likelihood import can_be_excluded, simple_lr
+from likelihood import can_be_excluded, simple_lr, frequency_based_lr
 
 
 STR_MARKERS = {
@@ -151,3 +151,45 @@ if __name__ == "__main__":
 
     print("\nLIKELIHOOD RATIO")
     print(f"LR = {lr:.3f}")
+
+def genotype_probability(alleles, allele_frequencies):
+    a1, a2 = alleles
+
+    p1 = allele_frequencies.get(a1, 0.001)
+    p2 = allele_frequencies.get(a2, 0.001)
+
+    if a1 == a2:
+        return p1 * p1
+
+    return 2 * p1 * p2
+
+
+def frequency_based_lr(suspect, mixture, frequencies):
+    lr = 1.0
+
+    for marker in suspect:
+        suspect_alleles = suspect[marker]
+        mixture_alleles = set(mixture[marker])
+
+        if not set(suspect_alleles).issubset(mixture_alleles):
+            continue
+
+        genotype_prob = genotype_probability(
+            suspect_alleles,
+            frequencies[marker]
+        )
+
+        lr *= 1 / genotype_prob
+
+    return lr
+
+frequency_lr = frequency_based_lr(
+    person1,
+    mixture_dropout,
+    frequencies
+)
+
+print("\nFREQUENCY-BASED LR")
+print(f"LR = {frequency_lr:.3f}")
+
+
