@@ -86,7 +86,44 @@ The combined LR is calculated across markers consistent with the observed mixtur
 This is a simplified educational model and is not validated for forensic casework.
 
 
+# Forensic DNA Mixture Lab
 
+Educational forensic bioinformatics project for DNA mixture interpretation.
+
+## Features
+
+- STR profile simulation
+- DNA mixture generation
+- Allele dropout simulation
+- Exclusion testing
+- Simple likelihood ratio
+- Frequency-based likelihood ratio
+
+## Experiments
+
+### Dropout experiment
+
+![Dropout](reports/dropout_experiment.png)
+
+Shows the effect of allele dropout on false exclusion rates.
+
+### Marker experiment
+
+![Markers](reports/marker_experiment.png)
+
+Shows the effect of increasing STR marker count.
+
+### Likelihood Ratio experiment
+
+![LR](reports/lr_experiment.png)
+
+Shows how dropout decreases DNA evidence strength.
+
+## Example Output
+
+```text
+FREQUENCY-BASED LR
+LR = 127013158563.227
 
 
 
