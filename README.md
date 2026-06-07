@@ -101,6 +101,17 @@ Example results:
 Results show that increasing dropout substantially reduces evidential strength.
 
 ---
+## Contributor experiment
+
+![Contributors](reports/contributors_experiment.png)
+
+| Contributors | False exclusion rate |
+|-------------|---------------------|
+| 2 | 0.989 |
+| 3 | 0.984 |
+| 4 | 0.976 |
+
+---
 
 ## Likelihood Ratio Models
 
