@@ -78,7 +78,7 @@ Example results:
 | 3                 | 0.471                |
 | 4                 | 0.563                |
 
-Under a strict exclusion model, increasing the number of markers can increase false exclusion rates because additional loci provide more opportunities for allele dropout to affect the interpretation.
+Under a strict exclusion model, increasing the number of markers can increase false exclusion rates because additional loci provide more opportunities for allele dropout to affect interpretation.
 
 ---
 
@@ -101,15 +101,22 @@ Example results:
 Results show that increasing dropout substantially reduces evidential strength.
 
 ---
-## Contributor experiment
 
-![Contributors](./reports/contributors_experiment.png)
+### 4. Contributor Experiment
 
-| Contributors | False exclusion rate |
-|-------------|---------------------|
-| 2 | 0.989 |
-| 3 | 0.984 |
-| 4 | 0.976 |
+Evaluates how the number of contributors affects DNA mixture interpretation.
+
+![Contributors](reports/contributors_experiment.png)
+
+Example results:
+
+| Contributors | False Exclusion Rate |
+| ------------ | -------------------- |
+| 2            | 0.989                |
+| 3            | 0.984                |
+| 4            | 0.976                |
+
+As the number of contributors increases, mixtures become increasingly complex and false exclusion rates remain high under a strict exclusion model.
 
 ---
 
@@ -159,9 +166,11 @@ forensic-dna-mixture-lab/
 │   ├── dropout_experiment.png
 │   ├── marker_experiment.png
 │   ├── lr_experiment.png
+│   ├── contributors_experiment.png
 │   ├── dropout_results.csv
 │   ├── marker_results.csv
-│   └── lr_results.csv
+│   ├── lr_results.csv
+│   └── contributors_results.csv
 │
 ├── src/
 │   ├── simulator.py
@@ -169,11 +178,35 @@ forensic-dna-mixture-lab/
 │   ├── experiment.py
 │   ├── marker_experiment.py
 │   ├── lr_experiment.py
+│   ├── contributors_experiment.py
 │   ├── plot_results.py
 │   ├── plot_marker_results.py
-│   └── plot_lr_results.py
+│   ├── plot_lr_results.py
+│   └── plot_contributors_results.py
+│
+├── notebooks/
+│   └── forensic_analysis.ipynb
 │
 └── README.md
+```
+
+---
+
+## Reproducibility
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run experiments:
+
+```bash
+python src/experiment.py
+python src/marker_experiment.py
+python src/lr_experiment.py
+python src/contributors_experiment.py
 ```
 
 ---
