@@ -119,6 +119,25 @@ Example results:
 As the number of contributors increases, mixtures become increasingly complex and false exclusion rates remain high under a strict exclusion model.
 
 ---
+### 5. Allele Drop-In Experiment
+
+Evaluates how spurious alleles (drop-in events) affect DNA mixture interpretation.
+
+![Drop-In](reports/dropin_experiment.png)
+
+Example results:
+
+| Drop-In Probability | Average log10(LR) |
+| ------------------- | ----------------- |
+| 0.00                | X.XXX             |
+| 0.05                | X.XXX             |
+| 0.10                | X.XXX             |
+| 0.20                | X.XXX             |
+| 0.30                | X.XXX             |
+
+Drop-in events simulate contamination or artefactual alleles appearing in a DNA profile. The experiment evaluates how increasing drop-in probability influences the strength of forensic evidence.
+
+---
 
 ## Likelihood Ratio Models
 
@@ -221,6 +240,12 @@ python src/contributors_experiment.py
 * Bayesian evidence evaluation
 * Validation against published forensic datasets
 
+---
+* Allele drop-in modelling
+* DNA degradation simulation
+* Peak height modelling
+* Continuous probabilistic genotyping
+* Mixture deconvolution methods
 ---
 
 ## Disclaimer
