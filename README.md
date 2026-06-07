@@ -103,7 +103,7 @@ Results show that increasing dropout substantially reduces evidential strength.
 ---
 ## Contributor experiment
 
-![Contributors](reports/contributors_experiment.png)
+![Contributors](./reports/contributors_experiment.png)
 
 | Contributors | False exclusion rate |
 |-------------|---------------------|
