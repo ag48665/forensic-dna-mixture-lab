@@ -18,10 +18,12 @@ STR_MARKERS = {
 
 def load_allele_frequencies(path="data/allele_frequencies.csv"):
     df = pd.read_csv(path)
+
     frequencies = {}
 
     for marker in df["marker"].unique():
         subset = df[df["marker"] == marker]
+
         frequencies[marker] = {
             int(row["allele"]): float(row["frequency"])
             for _, row in subset.iterrows()
@@ -31,16 +33,22 @@ def load_allele_frequencies(path="data/allele_frequencies.csv"):
 
 
 def generate_profile(frequencies=None):
+
     profile = {}
 
     if frequencies is None:
+
         for marker, alleles in STR_MARKERS.items():
+
             profile[marker] = sorted([
                 random.choice(alleles),
                 random.choice(alleles)
             ])
+
     else:
+
         for marker, allele_freqs in frequencies.items():
+
             alleles = list(allele_freqs.keys())
             weights = list(allele_freqs.values())
 
@@ -56,42 +64,100 @@ def generate_profile(frequencies=None):
 
 
 def create_mixture(profile1, profile2):
+
     mixture = defaultdict(list)
 
     for marker in profile1:
+
         mixture[marker].extend(profile1[marker])
         mixture[marker].extend(profile2[marker])
-        mixture[marker] = sorted(set(mixture[marker]))
+
+        mixture[marker] = sorted(
+            set(mixture[marker])
+        )
 
     return dict(mixture)
 
 
 def apply_dropout(profile, probability=0.2):
+
     dropped = {}
 
     for marker, alleles in profile.items():
+
         remaining = []
 
         for allele in alleles:
+
             if random.random() > probability:
                 remaining.append(allele)
 
         if len(remaining) == 0:
-            remaining.append(random.choice(alleles))
+            remaining.append(
+                random.choice(alleles)
+            )
 
         dropped[marker] = sorted(remaining)
 
     return dropped
 
 
+def apply_dropin(profile, frequencies, probability=0.05):
+
+    modified = {}
+
+    for marker, alleles in profile.items():
+
+        new_alleles = list(alleles)
+
+        if random.random() < probability:
+
+            possible_alleles = list(
+                frequencies[marker].keys()
+            )
+
+            dropin_allele = random.choice(
+                possible_alleles
+            )
+
+            new_alleles.append(
+                dropin_allele
+            )
+
+        modified[marker] = sorted(
+            set(new_alleles)
+        )
+
+    return modified
+
+
 if __name__ == "__main__":
+
     frequencies = load_allele_frequencies()
 
-    person1 = generate_profile(frequencies)
-    person2 = generate_profile(frequencies)
+    person1 = generate_profile(
+        frequencies
+    )
 
-    mixture = create_mixture(person1, person2)
-    mixture_dropout = apply_dropout(mixture, probability=0.2)
+    person2 = generate_profile(
+        frequencies
+    )
+
+    mixture = create_mixture(
+        person1,
+        person2
+    )
+
+    mixture_dropout = apply_dropout(
+        mixture,
+        probability=0.2
+    )
+
+    mixture_dropin = apply_dropin(
+        mixture_dropout,
+        frequencies,
+        probability=0.05
+    )
 
     print("\nPERSON 1")
     print(person1)
@@ -105,7 +171,13 @@ if __name__ == "__main__":
     print("\nDNA MIXTURE WITH DROPOUT")
     print(mixture_dropout)
 
-    excluded = can_be_excluded(person1, mixture_dropout)
+    print("\nDNA MIXTURE WITH DROPOUT AND DROP-IN")
+    print(mixture_dropin)
+
+    excluded = can_be_excluded(
+        person1,
+        mixture_dropin
+    )
 
     print("\nEXCLUSION TEST")
 
@@ -114,14 +186,17 @@ if __name__ == "__main__":
     else:
         print("Suspect cannot be excluded")
 
-    lr = simple_lr(person1, mixture_dropout)
+    lr = simple_lr(
+        person1,
+        mixture_dropin
+    )
 
     print("\nSIMPLE LIKELIHOOD RATIO")
     print(f"LR = {lr:.3f}")
 
     frequency_lr = frequency_based_lr(
         person1,
-        mixture_dropout,
+        mixture_dropin,
         frequencies
     )
 
