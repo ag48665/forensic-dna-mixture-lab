@@ -1,6 +1,6 @@
 # Forensic DNA Mixture Lab
 
-Educational forensic bioinformatics project for studying DNA mixture interpretation, allele dropout, and likelihood ratios using simulated STR profiles.
+Computational forensic genetics project exploring DNA mixture interpretation, allele dropout, and likelihood ratio-based evidence evaluation using simulated STR profiles.
 
 ---
 
@@ -17,6 +17,52 @@ This project provides a simulation framework for exploring:
 * Suspect exclusion testing
 * Likelihood ratio calculations
 * Monte Carlo experiments
+
+---
+## Project Highlights
+
+✔ STR profile simulation
+
+✔ DNA mixture generation
+
+✔ Allele dropout modelling
+
+✔ Allele drop-in modelling
+
+✔ Population allele frequencies
+
+✔ Likelihood ratio calculation
+
+✔ Monte Carlo simulation framework
+
+✔ Forensic evidence interpretation
+
+---
+## Skills Demonstrated
+
+### Forensic Genetics
+
+- DNA mixture interpretation
+- STR profile analysis
+- Allele dropout modelling
+- Allele drop-in modelling
+- Kinship and contributor evaluation
+- Likelihood ratio interpretation
+
+### Computational Genetics
+
+- Population allele frequencies
+- Monte Carlo simulations
+- Statistical modelling
+- Probabilistic reasoning
+- Evidence evaluation
+
+### Programming
+
+- Python
+- Data visualization
+- Statistical analysis
+- Reproducible computational workflows
 
 ---
 
@@ -138,6 +184,13 @@ Example results:
 Drop-in events simulate contamination or artefactual alleles appearing in a DNA profile. The experiment evaluates how increasing drop-in probability influences the strength of forensic evidence.
 
 ---
+## Key Takeaway
+
+This project demonstrates how allele dropout, drop-in events, and contributor complexity influence DNA mixture interpretation and evidential strength.
+
+The simulations reproduce several core challenges encountered in forensic DNA analysis and illustrate why probabilistic approaches are often preferred over strict exclusion-based methods.
+
+---
 
 ## Likelihood Ratio Models
 
@@ -234,18 +287,14 @@ python src/contributors_experiment.py
 
 * Probabilistic genotyping
 * Multi-contributor mixtures
-* Peak height simulation
+* Peak height modelling
 * Stutter modelling
+* DNA degradation simulation
 * Population-specific allele frequencies
 * Bayesian evidence evaluation
-* Validation against published forensic datasets
-
----
-* Allele drop-in modelling
-* DNA degradation simulation
-* Peak height modelling
-* Continuous probabilistic genotyping
 * Mixture deconvolution methods
+* Validation against published forensic datasets
+  
 ---
 
 ## Disclaimer
@@ -253,3 +302,22 @@ python src/contributors_experiment.py
 This project is intended for educational and research-training purposes only.
 
 It is not validated for forensic casework and must not be used in real criminal investigations.
+
+## Author
+## Author
+
+**Agata Gabara**
+
+Incoming MSc Bioinformatics Student
+
+Research Interests:
+
+- Computational Biology
+- Statistical Genetics
+- Population Genetics
+- Cancer Genomics
+- Machine Learning for Genomics
+
+GitHub: https://github.com/ag48665
+
+LinkedIn: https://www.linkedin.com/in/agatha-gabara-06494a37/
