@@ -304,7 +304,6 @@ This project is intended for educational and research-training purposes only.
 It is not validated for forensic casework and must not be used in real criminal investigations.
 
 ## Author
-## Author
 
 **Agata Gabara**
 
